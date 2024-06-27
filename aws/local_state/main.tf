@@ -1,24 +1,14 @@
-terraform {
-  required_providers {
-    aws = {
-      source  = "hashicorp/aws"
-      version = "~> 4.16"
-    }
-  }
-
-  required_version = ">= 1.2.0"
-}
-
 provider "aws" {
-  region  = "us-west-2"
+  region     = "us-east-1"
+  access_key = "your-access-key"
+  secret_key = "your-secret-key"
 }
 
-resource "aws_instance" "app_server" {
-  ami           = "ami-830c94e3"
-  instance_type = "t2.micro"
-
-  tags = {
-    Name = "Terraform_Demo"
-  }
+resource "aws_instance" "myec2" {
+    ami = "ami-0d13e3e640877b0b9"
+    instance_type = "t2.micro"
+    
+    tags = {
+        Name = "ec2-created-from-terraform"
+    }
 }
-
